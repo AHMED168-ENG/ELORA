@@ -1,0 +1,123 @@
+<!-- Footer Start -->
+<footer>
+  <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+  <div class="row px-xl-5 pt-5">
+    <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+      <h5 class="text-secondary text-uppercase mb-4">
+        <%= trans("GETINTOUCH") %>
+      </h5>
+      <p class="mb-4"><%- sitSetting ? sitSetting["summary_" + lang] : "" %></p>
+      <p class="mb-2">
+        <i class="fa fa-map-marker-alt text-primary mr-3"></i><%=
+        sitSetting ? sitSetting["addres_" + lang] : "" %>
+      </p>
+      <p class="mb-2">
+        <i class="fa fa-envelope text-primary mr-3"></i><%=
+        sitSetting ? sitSetting["officialEmail"] : "" %>
+      </p>
+      <p class="mb-0">
+        <i class="fa fa-phone-alt text-primary mr-3"></i><%=
+        sitSetting ? sitSetting["phoneNumber"] : "" %>
+      </p>
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <div class="row">
+        <div class="col-md-4 mb-5">
+          <h5 class="text-secondary text-uppercase mb-4">
+            <%= trans("pages") %>
+          </h5>
+          <div class="d-flex flex-column justify-content-start">
+            <a class="text-secondary mb-2" href="/home"
+              ><i class="fa fa-angle-right mr-2"></i><%= trans("home") %></a
+            >
+            <a class="text-secondary mb-2" href="/all-categorys"
+              ><i class="fa fa-angle-right mr-2"></i><%= trans("categorys")
+              %></a
+            >
+            <a class="text-secondary mb-2" href="/all-products"
+              ><i class="fa fa-angle-right mr-2"></i><%= trans("products") %></a
+            >
+            <a class="text-secondary mb-2" href="/shoping-cart"
+              ><i class="fa fa-angle-right mr-2"></i><%= trans("shopingCart")
+              %></a
+            >
+            <a class="text-secondary mb-2" href="/favorit-cart"
+              ><i class="fa fa-angle-right mr-2"></i><%= trans("favoritCart")
+              %></a
+            >
+
+            <a class="text-secondary" href="/contact-us"
+              ><i class="fa fa-angle-right mr-2"></i><%= trans("contactUs")
+              %></a
+            >
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <h5 class="text-secondary text-uppercase mb-4">
+            <%= trans("categorys") %>
+          </h5>
+          <div class="d-flex flex-column justify-content-start">
+            <% allCatigoryForNave.slice(0,5).forEach(element => { %>
+            <a class="text-secondary mb-2" href="/all-products?category=<%= element["slug_" + lang] %>"
+              ><i class="fa fa-angle-right mr-2"></i><%= element["category_" +
+              lang] %></a
+            >
+            <%})%>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="logoImage">
+            <% if (sitSetting) { %>
+              <img src="/assets//dashboard/AppSetting/<%= sitSetting.logo.split("--")[0]  %>" alt="">
+            <% } %>
+          </div>
+          <% if (!userData) { %>
+           <div class="input-group-append">
+                <a href="/signIn" class="btn btn-block mb-3 btn-primary">Sign In</a>
+              </div>
+          <% } %>
+          
+          <h6 class="text-secondary text-uppercase mb-3"><%= trans("followUs") %></h6>
+          <div class="d-flex">
+            <a class="btn btn-primary btn-square mr-2" href="#"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-primary btn-square mr-2" href="#"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a class="btn btn-primary btn-square mr-2" href="#"
+              ><i class="fa-brands fa-instagram"></i></a>
+            <a class="btn btn-primary btn-square mr-2" href="#"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+            <a class="btn btn-primary btn-square" href="#"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="row border-top mx-xl-5 py-4"
+    style="border-color: rgba(256, 256, 256, 0.1) !important"
+  >
+    <div class="col-md-6 px-xl-0">
+      <p class="mb-md-0 text-center text-md-left text-secondary">
+        &copy; <a class="text-primary" href="#">Elora</a>. All Rights Reserved.
+        developed by
+        <a class="text-primary" href="https://www.linkedin.com/in/ahmed-zaky-507765208/">Ahmed Zaky</a>
+      </p>
+    </div>
+    <div class="col-md-6 px-xl-0 text-center text-md-right">
+      <img class="img-fluid" src="img/payments.png" alt="" />
+    </div>
+  </div>
+</div>
+</footer>
+<!-- Footer End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"
+  ><i class="fa fa-angle-double-up"></i
+></a>

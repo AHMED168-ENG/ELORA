@@ -1,0 +1,148 @@
+
+<%- include("../inclueds/head")  %>
+</head>
+<body>
+<%- include("../inclueds/upperNavbare")  %> 
+<%- include("../inclueds/lowerNavbare")  %> 
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid" 
+        data-aos="fade-down"
+        data-aos-delay=""
+        data-aos-offset=""
+        data-aos-duration="1500">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/home"><%= trans("home") %></a>
+                    <span class="breadcrumb-item active"><%= trans("contactUs") %></span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <h2
+                    data-aos="fade-right"
+                    data-aos-delay=""
+                    data-aos-offset=""
+                    data-aos-duration="1500" 
+                    class="section-title position-relative text-uppercase"><span class="bg-secondary pr-3"><%= trans("contactUs") %></span></h2>
+            </div>
+            <div class="col-lg-7 mb-5"  
+                    data-aos="fade-left"
+                    data-aos-delay=""
+                    data-aos-offset=""
+                    data-aos-duration="1500" >
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="" novalidate="novalidate" class="sendMessageToBack">
+                 
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="subject" placeholder="<%= trans("subject") %>"
+                                required data-validation-required-message="<%= trans("enterSubject") %>" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" rows="8" name="message" placeholder="<%= trans("message") %>"
+                                required data-validation-required-message="<%= trans("enterSubject") %>"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <% if (userData) { %>
+                         <div class="g-recaptcha mb-2" data-sitekey="<%= secretKey %>"></div>
+
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton"><%= trans("sendMessage") %></button>
+                        </div>
+                        <% } else { %>
+                            <a class="btn btn-primary btn-block py-2" href="/signIn"><%= trans("signIn") %></a>
+                        <% } %>
+                        
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5 mb-5"  
+                    data-aos="fade-right"
+                    data-aos-delay=""
+                    data-aos-offset=""
+                    data-aos-duration="1500" >
+                <div class="bg-light p-30 mb-30">
+                    <%- sitSetting ? sitSetting.ifream : "" %>
+                </div>
+                <div class="bg-light p-30 mb-3">
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i><%= sitSetting ? sitSetting["addres_" + lang] : "" %></p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><%= sitSetting ? sitSetting.officialEmail : "" %></p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i><%= sitSetting ? sitSetting.phoneNumber : "" %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+<%- include("../inclueds/footer")  %>
+<%- include("../inclueds/footer_script")  %>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="/public/website/js/sweetalert.min.js"></script>
+
+<script>
+const sendMessageForm = document.querySelector(".sendMessageToBack")
+    const userId = '<%= userData ? userData.id : 0 %>'
+    const messages = sendMessageForm.querySelector("[name='message']")
+    const subject = sendMessageForm.querySelector("[name='subject']")
+    sendMessageForm.onsubmit = (e) => {
+        const newForm = new FormData(sendMessageForm)
+       e.preventDefault()
+       if(!subject.value || !subject.value) {
+        return Swal.fire({
+                    icon: 'error',
+                    title:"enter data in fields",
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+       }
+    	let formdata = { 
+            "userId":userId,
+            "subject":subject.value, //is an array
+            "message":messages.value,// this is an array
+            captcha : newForm.get("g-recaptcha-response")
+        }
+       $.ajax({
+        method:"post",
+        data : formdata,
+        url : "/dashboard/messages/create?_csrf="+'<%= csrf %>',
+        success(data) {
+            if(!data.status) {
+                Swal.fire({
+                    icon: 'error',
+                    title: data.message,
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            } else {
+                sendMessageForm.reset()
+                Swal.fire({
+                    icon: 'success',
+                    title: data.message,
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            }
+        },
+        error(error) {
+            Swal.fire({
+                icon: "error",
+                title: error.statusText,
+                showConfirmButton: false,
+                timer: 2500
+            })
+        }
+       })
+    }
+</script>
+</body>
+    

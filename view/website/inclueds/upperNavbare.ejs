@@ -1,0 +1,151 @@
+<!-- Topbar Start -->
+<div class="upperNavbare">
+  <div class="row bg-secondary py-1 px-xl-5">
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="d-inline-flex align-items-center h-100 text-capitalize">
+        <a class="text-body mr-3" href="/all-categorys"
+          ><%= trans("categorys") %></a
+        >
+        <a class="text-body mr-3" href="/contact-us"
+          ><%= trans("contactUs") %></a
+        >
+        <a class="text-body mr-3" href="/testmonials"
+          ><%= trans("testmonials") %></a
+        >
+        <a class="text-body mr-3" href="/faqs"><%= trans("faqs") %></a>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center text-lg-right">
+      <div class="d-inline-flex align-items-center">
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-sm btn-light dropdown-toggle"
+            data-toggle="dropdown"
+          >
+            <%= !userData ? "my account" : trans("hello") + " " + userData.fName
+            + " " + userData.lName %>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <% if (!userData) { %>
+            <a class="dropdown-item" href="/signIn"><%= trans("SignIn") %></a>
+            <a class="dropdown-item" href="/signUp"><%= trans("SignUp") %></a>
+            <% } else { %>
+            <ul class="list-unstyled userData">
+              <li>
+                <a href="/personal-information">
+                  <span><%= userData.fName + " " + userData.lName %></span>
+                  <div class="image">
+                    <img src="<%= userData.image? "/assets/dashboard/Users/" +
+                    userData.image.split("--")[0] :
+                    "/assets/dashboard/defaultImages/avatar.png" %>" alt="" />
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/your-orders"><%= trans("allUserOrders") %></a>
+              </li>
+              <li>
+                <a href="/personal-information"
+                  ><%= trans("updateMyAccount") %></a
+                >
+              </li>
+              <li>
+                <form method="post" action="/signOut?_csrf=<%=csrf %>">
+                  <button><%= trans("signOut") %></button>
+                </form>
+              </li>
+            </ul>
+            <% } %>
+          </div>
+        </div>
+        <!-- <div class="btn-group mx-2">
+          <button
+            type="button"
+            class="btn btn-sm btn-light dropdown-toggle"
+            data-toggle="dropdown"
+          >
+            USD
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">EUR</button>
+            <button class="dropdown-item" type="button">GBP</button>
+            <button class="dropdown-item" type="button">CAD</button>
+          </div>
+        </div> -->
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-sm btn-light dropdown-toggle"
+            data-toggle="dropdown"
+          >
+            <%= lang == "ar" ? "عربي" : "english" %>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button
+              class="dropdown-item setLanguage"
+              data_lang="ar"
+              type="button"
+            >
+              عربي
+            </button>
+            <button
+              class="dropdown-item setLanguage"
+              data_lang="en"
+              type="button"
+            >
+              english
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="d-inline-flex align-items-center d-block d-lg-none">
+        <a href="" class="btn px-0 ml-2">
+          <i class="fas fa-heart text-dark"></i>
+          <span
+            class="badge text-dark border border-dark rounded-circle"
+            style="padding-bottom: 2px"
+            >0</span
+          >
+        </a>
+        <a href="" class="btn px-0 ml-2">
+          <i class="fas fa-shopping-cart text-dark"></i>
+          <span
+            class="badge text-dark border border-dark rounded-circle"
+            style="padding-bottom: 2px"
+            >0</span
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="row align-items-center bg-light px-xl-5 d-none d-lg-flex navbareMid"
+  >
+    <div class="col-lg-4">
+      <a href="/home" class="text-decoration-none logoImageNav">
+        <% if (sitSetting) { %> <img src="/assets//dashboard/AppSetting/<%=
+        sitSetting.logo.split("--")[0] %>" alt=""> <% } %>
+      </a>
+    </div>
+    <div class="col-lg-4 col-6 text-left">
+      <form action="" style="margin: 0">
+        <div class="input-group classNavSearch">
+          <input type="text" class="form-control" placeholder="<%=
+          trans("searchProducts") %>" />
+          <div class="input-group-append">
+            <span class="input-group-text bg-transparent text-primary">
+              <i class="fa fa-search" onclick="searchIcon()"></i>
+            </span>
+          </div>
+          <ul class="list-unstyled"></ul>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-4 col-6 text-right">
+      <p class="m-0"><%= trans("CustomerService") %></p>
+      <h5 class="m-0"><%= sitSetting ? sitSetting.mobile : "" %></h5>
+    </div>
+  </div>
+</div>
+<!-- Topbar End -->

@@ -1,0 +1,64 @@
+<%- include("../inclueds/head")  %>
+</head>
+<body>
+<%- include("../inclueds/upperNavbare")  %> 
+<%- include("../inclueds/lowerNavbare")  %> 
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+
+<% if (allCatigory.length > 0) { %>
+    <!-- Categories Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class="col-12">
+                <h2  data-aos="fade-left"
+                    data-aos-delay=""
+                    data-aos-offset=""
+                    data-aos-duration="1200" class="section-title position-relative text-uppercase"><span class="bg-secondary pr-3"><%= trans("ALLCATEGORIES") %></span></h2>
+            </div>
+            <% allCatigory.forEach(element => { %>
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1"  
+                    data-aos="zoom-in"
+                    data-aos-delay=""
+                    data-aos-offset=""
+                    data-aos-duration="1200">
+                <a class="text-decoration-none latestCategoryLink" href="/all-products?category=<%= element["slug_" + lang] %>">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img style="width:100%;height:100%" class="img-fluid" src="/assets/dashboard/Categorys/<%= element.image.split("--")[0] %>" alt="">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6><%= element["category_" + lang] %></h6>
+                            <small class="text-body"><%= element.products.length %> <%= trans("productsCount") %></small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% }) %>
+
+        </div>
+        <%- include("../inclueds/pafination.ejs")  %>
+    </div>
+<% } else { %>
+    <div class="container">
+        <div class="alert alert-danger" style="background:#f8cb27;text-align: center;text-transform: capitalize;"><%= trans("noCategorys") %></div>
+    </div>
+<% } %>
+
+
+<!-- <div class="col-12">
+    <nav>
+        <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div> -->
+<%- include("../inclueds/footer")  %>
+<%- include("../inclueds/footer_script")  %>
+
+</body>
+    

@@ -1,0 +1,276 @@
+<%- include("../inclueds/head") %>
+
+<head>
+  <body>
+    <%- include("../inclueds/upperNavbare.ejs") %> <%-
+    include("../inclueds/lowerNavbare") %>
+
+    <!-- //////////////////////////////////////////////////// -->
+
+    <div class="signin">
+      <div class="container">
+        <%- include("../inclueds/notification") %>
+        <div class="row">
+          <div
+            class="col-md-6"
+            data-aos="fade-left"
+            data-aos-delay=""
+            data-aos-offset=""
+            data-aos-duration="1500"
+          >
+            <div class="right p-4 mb-3">
+              <h4>
+                <%= trans("welcomeHir") %>
+                <span class="main-color"
+                  ><%= sitSetting ? sitSetting["sitName_" + lang] : "" %>
+                  !</span
+                >
+              </h4>
+              <br />
+              <form
+                method="post"
+                enctype="multipart/form-data"
+                action="?_csrf=<%= csrf %>"
+              >
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="nameOne"
+                      ><%= trans("FirstName") %><span class="text-danger"
+                        >*</span
+                      ></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nameOne"
+                      name="fName"
+                      value="<%= bodyData.fName %>"
+                    />
+                    <% if (validationError.fName) { %>
+                    <span class="text-danger"
+                      ><%=validationError.fName[0].msg %></span
+                    >
+                    <% } %>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="name2"
+                      ><%= trans("LastName") %><span class="text-danger"
+                        >*</span
+                      ></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name2"
+                      name="lName"
+                      value="<%= bodyData.lName %>"
+                    />
+                    <% if (validationError.lName) { %>
+                    <span class="text-danger"
+                      ><%=validationError.lName[0].msg %></span
+                    >
+                    <% } %>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="age"
+                      ><%= trans("Age") %>
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      name="age"
+                      value="<%= bodyData.age %>"
+                    />
+                    <% if (validationError.age) { %>
+                    <span class="text-danger"
+                      ><%=validationError.age[0].msg %></span
+                    >
+                    <% } %>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="phone"
+                      ><%= trans("Mobile") %>
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="phone"
+                      name="mobile"
+                      value="<%= bodyData.mobile %>"
+                    />
+                    <% if (validationError.number) { %>
+                    <span class="text-danger"
+                      ><%=validationError.number[0].msg %></span
+                    >
+                    <% } %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="addres"
+                    ><%= trans("Address") %>
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control addres"
+                    id="addres"
+                    name="address"
+                    value="<%= bodyData.address %>"
+                  />
+                  <% if (validationError.addres) { %>
+                  <span class="text-danger"
+                    ><%=validationError.addres[0].msg %></span
+                  >
+                  <% } %>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"
+                    ><%= trans("EmailAddress") %>
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    name="email"
+                    value="<%= bodyData.email %>"
+                  />
+                  <% if (validationError.email) { %>
+                  <span class="text-danger"
+                    ><%=validationError.email[0].msg %></span
+                  >
+                  <% } %>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1"
+                    ><%= trans("password") %><span class="text-danger"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    name="password"
+                  />
+                  <% if (validationError.password) { %>
+                  <span class="text-danger"
+                    ><%=validationError.password[0].msg %></span
+                  >
+                  <% } %>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1"
+                    ><%= trans("PasswordAgain") %>
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword2"
+                    name="confirmPassword"
+                  />
+                  <% if (validationError.confirmPassword) { %>
+                  <span class="text-danger"
+                    ><%=validationError.confirmPassword[0].msg %></span
+                  >
+                  <% } %>
+                </div>
+
+                <div class="form-group">
+                  <label for="projectinput2"
+                    ><%= trans("ProfileImage") %></label
+                  >
+                  <div class="custom-file">
+                    <input
+                      type="file"
+                      name="image"
+                      class="custom-file-input"
+                      id="inputGroupFile01"
+                    />
+                    <label class="custom-file-label" for="inputGroupFile01">
+                      <%= trans("choseImage") %></label
+                    >
+                  </div>
+                  <% if (validationError.image) { %>
+                  <span class="text-danger"
+                    ><%=validationError.image[0].msg %></span
+                  >
+                  <% } %>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  <%= trans("SignUp") %>
+                </button>
+                <hr />
+              </form>
+
+              <p class="mb-0 mt-2">
+                <%= trans("haveAccount") %> ?
+                <a href="signIn"><%= trans("SignIn") %></a>
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6"
+            data-aos="fade-right"
+            data-aos-delay=""
+            data-aos-offset=""
+            data-aos-duration="1500"
+          >
+            <div class="left">
+              <img src="/assets/website/login.svg" class="img-fluid" alt="0" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+    <%- include("../inclueds/footer_script") %> <%-
+    include("../inclueds/footer") %>
+    <script>
+      window.onload = function () {
+        var alertNotification = document.querySelector(".alertNotification");
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+        function showPosition(position) {
+          $.get(
+            "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude" +
+              position.coords.latitude +
+              "&longitude" +
+              position.coords.longitude +
+              "&sensor=false&localityLanguage=en",
+            function (data) {
+              document.querySelector(
+                ".addres"
+              ).value = `${data.continent},${data.countryName},${data.locality}`;
+            }
+          );
+        }
+        if (alertNotification) {
+          alertNotification.classList.add("active");
+          console.log(alertNotification);
+          console.log(alertNotification.classList);
+          setTimeout(() => {
+            alertNotification.classList.remove("active");
+          }, 4000);
+        }
+      };
+    </script>
+  </body>
+</head>

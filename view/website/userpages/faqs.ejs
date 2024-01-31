@@ -1,0 +1,89 @@
+
+<%- include("../inclueds/head")  %>
+</head>
+<body>
+<%- include("../inclueds/upperNavbare")  %> 
+<%- include("../inclueds/lowerNavbare")  %> 
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid"  
+            data-aos="fade-right"
+            data-aos-delay=""
+            data-aos-offset=""
+            data-aos-duration="1200">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/home"><%= trans("home") %></a>
+                    <a class="breadcrumb-item text-dark" href="/all-products"><%= trans("products") %></a>
+                    <span class="breadcrumb-item active"><%= trans("faqs") %></span>
+                </nav>
+                <%- include("../inclueds/notification.ejs") %> 
+            </div>    
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- faqs Start -->
+    <div class="all_faqs">
+        <div class="container-fluid">
+        <% if (allfaqs.length > 0) { %>
+            <div class="row px-xl-5">
+                <div class="col-12 mb-2">
+                    <h2 data-aos="fade-left"
+                    data-aos-delay=""
+                    data-aos-offset=""
+                    data-aos-duration="1200" class="section-title position-relative text-uppercase"><span class="bg-secondary pr-3"><%= trans("FrequentlyAskedQuestions") %></span></h2>
+                </div>
+                <div class="col-12">
+                    <div class="accordion">
+                        <% allfaqs.forEach((element , index) => { %>
+                            <div  data-aos="fade-up"
+                                    data-aos-delay=""
+                                    data-aos-offset=""
+                                    data-aos-duration="1200" class="accordion-item ">
+                                <button id="accordion-button-1" aria-expanded="<%= index == 0 ? true : false %>">
+                                    <span class="accordion-title"
+                                    ><%= element["question_" + lang] %></span
+                                    ><span class="icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <%- element["ansower_" + lang] %>
+                                </div>
+                            </div>                    
+                        <% }) %>
+                        
+                    </div>
+                </div>
+            </div>
+            <br>
+            <%- include("../inclueds/pafination.ejs")  %>
+        <% } else { %>
+            <div class="row px-xl-5 ">
+                <div class="col-12">
+                        <div class="alert alert-danger " style="background:#f8cb27;text-align: center;text-transform: capitalize;"><%= trans("noProducts") %></div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+    
+    <!-- faqs End -->
+
+
+<%- include("../inclueds/footer")  %>
+<%- include("../inclueds/footer_script")  %>
+<script src="/public/website/js/sweetalert.min.js"></script>
+<script src="/public/website/js/faqs.js"></script>
+</body>
+    
+
+
+
+
+
+
+
+

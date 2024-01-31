@@ -1,0 +1,21 @@
+console.log(process.env.UV_THREADPODL_SIZE);
+console.log(OS.cpus().length);
+
+
+user search {
+    1- create user search 
+    2- find user search 
+    3- deleta user search 
+    
+}
+
+
+
+
+Hi everyone - I am looking for a new role as NodeJs Dev and would appreciate your support. Thank you in advance for any connections, advice, or opportunities you can offer. #OpenToWork
+CV : https://lnkd.in/dVeBqRnR
+
+
+GitHub : https://lnkd.in/dGQ_Cysq
+
+

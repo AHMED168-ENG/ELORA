@@ -1,0 +1,8 @@
+/node_modules
+/locales
+/env
+/assets
+/package.json
+/tsconfig.json
+/src
+/dist/logging

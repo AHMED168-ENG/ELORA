@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      <%= sitSetting ? sitSetting["sitName_" + lang] + " | " + trans(title) :
+      trans(title) %>
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="<%= metaKeywords ? metaKeywords : sitSetting["metakeywords_" + lang] %>" name="keywords" /> <meta content="<%= metaDescription ?
+    metaDescription : sitSetting["metaDescription_" + lang] %>"
+    name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <!-- Font Awesome 6 -->
+    <link href="/public/website/css/all.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="/public/website/lib/animate/animate.min.css" rel="stylesheet" />
+
+    <link
+      href="/public/website/lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500&family=Open+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:400,800"
+      rel="stylesheet"
+    />
+    <% if (lang == "ar") { %>
+    <link href="/public/website/css/style.rtl.css" rel="stylesheet" />
+    <link href="/public/website/css/aosAr.css" rel="stylesheet" />
+
+    <% } else { %>
+    <link href="/public/website/css/style.ltr.css" rel="stylesheet" />
+    <link href="/public/website/css/aosEn.css" rel="stylesheet" />
+    <% } %>
+  </head>
+</html>
