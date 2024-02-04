@@ -33,7 +33,7 @@ class MainCategoryController {
                     offset: +((page - 1) * PAGE_ITEMS),
                     limit: +PAGE_ITEMS,
                     where: {
-                        mainCatigory: { [sequelize_1.Op.eq]: 0 },
+                        mainCatigory: { [sequelize_1.Op.eq]: null },
                     },
                 })
                     .then((result) => {

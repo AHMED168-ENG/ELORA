@@ -33,7 +33,7 @@ class SitePageRoutes {
         this.routes();
     }
     routes() {
-        this.Router.get("/home", this.sitePagesController.home);
+        this.Router.get("/", this.sitePagesController.home);
         this.Router.get("/all-categorys", this.sitePagesController.allCategorys);
         this.Router.get("/all-products", this.sitePagesController.allProducts);
         this.Router.get("/contact-us", this.sitePagesController.contactUs);

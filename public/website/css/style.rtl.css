@@ -11057,8 +11057,14 @@ div.testmonial img {
   object-fit: cover;
 }
 div.testmonial p {
-  height: 105px;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
+div.testmonial img {
+  aspect-ratio: 1/0.5;
 }
 div.testmonial blockquote {
   position: relative;

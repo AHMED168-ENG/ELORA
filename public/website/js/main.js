@@ -60,6 +60,7 @@
     },
   });
   // testmonial-carousel
+  
   $(".testmonial-carousel").owlCarousel({
     loop: true,
     margin: 15,
