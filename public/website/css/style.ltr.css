@@ -11221,16 +11221,22 @@ div.testmonial .author h5 span {
 .logoImage img {
   width: 100%;
   height: 100%;
+  transform: translateX(-35px);
+  -webkit-transform: translateX(-35px);
+  -moz-transform: translateX(-35px);
+  -ms-transform: translateX(-35px);
+  -o-transform: translateX(-35px);
 }
 
 .logoImageNav {
   width: 120px;
-  aspect-ratio: 1/0.7;
+  aspect-ratio: 1/0.5;
   display: block;
 }
 .logoImageNav img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 footer p,
