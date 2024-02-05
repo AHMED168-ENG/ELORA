@@ -48,7 +48,7 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" rows="8" name="message" placeholder="<%= trans("message") %>"
+                            <textarea style="height: 334px;" class="form-control" rows="8" name="message" placeholder="<%= trans("message") %>"
                                 required data-validation-required-message="<%= trans("enterSubject") %>"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
@@ -71,7 +71,7 @@
                     data-aos-offset=""
                     data-aos-duration="1500" >
                 <div class="bg-light p-30 mb-30">
-                    <%- sitSetting ? sitSetting.ifream : "" %>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27631.500160058695!2d31.34271505!3d30.0386503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1707153545911!5m2!1sen!2seg" width="100%" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="bg-light p-30 mb-3">
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i><%= sitSetting ? sitSetting["addres_" + lang] : "" %></p>
