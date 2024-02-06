@@ -5,8 +5,8 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- body , section , .container , .container-fluid {
-  overflow-x: hidden !important;
+ section , .container , .container-fluid , h2 , h1 {
+  overflow: hidden !important;
  }
 body.padding {
   padding-top: 186px;
