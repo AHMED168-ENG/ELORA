@@ -29,6 +29,9 @@ body.padding {
 .navbareLower.active {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
 }
+.navbareLower {
+  overflow: visible !important;
+}
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
