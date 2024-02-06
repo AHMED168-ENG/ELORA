@@ -26,15 +26,16 @@
 
 
     <!-- Cart Start -->
-    <div class="container-fluid" 
-        data-aos="fade-right"
-        data-aos-delay=""
-        data-aos-offset=""
-        data-aos-duration="1500">
-        <div class="row px-xl-5">
-            <% if (allFavoritProducts.length > 0) { %>
-                <div class="col-lg-12">
-                    <table class=" mb-5 table display nowrap table-striped table-bordered" style="width:100% !important">
+    <div class="container-fluid">
+        <div class="row px-xl-5" >
+            <div 
+                data-aos="fade-up"
+                data-aos-delay=""
+                data-aos-offset=""
+                data-aos-duration="1500" class="table-responsive mb-5 col-12">
+                
+                <% if (allFavoritProducts.length > 0) { %>
+                    <table class="mb-5 table display nowrap table-striped table-bordered" style="width:100% !important">
                         <thead class="thead-dark">
                             <tr>
                                 <th><%= trans("products") %></th>
@@ -61,16 +62,16 @@
                                 </td>
                             </tr>
                             <% }) %>
-                                                   
+                                                
                         </tbody>
                     </table>
                     <%- include("../inclueds/pafination.ejs")  %>
-                </div>
-            <% } else { %>
-                <div class="col-lg-12">
-                    <div class="alert alert-danger"><%= trans("noFavoritProducts") %></div>
-                </div>
-            <% } %>
+                <% } else { %>
+                    <div class="col-lg-12">
+                        <div class="alert alert-danger"><%= trans("noFavoritProducts") %></div>
+                    </div>
+                <% } %>
+            </div>
         </div>
     </div>
     <!-- Cart End -->
