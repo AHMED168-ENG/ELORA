@@ -108,7 +108,7 @@ class AuthUserController {
                 console.log(user);
                 var expire = !userData.rememberMe ? { maxAge: 86400000 } : {};
                 res.cookie("User", user, expire);
-                res.redirect("/");
+                res.redirect("/home");
             }
             catch (error) {
                 next(error);

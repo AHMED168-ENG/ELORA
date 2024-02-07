@@ -15,7 +15,7 @@ class UserNotAuthonticat {
         return __awaiter(this, void 0, void 0, function* () {
             var Admin = req.cookies.User;
             if (Admin) {
-                res.redirect("/");
+                res.redirect("/home");
             }
             else {
                 next();

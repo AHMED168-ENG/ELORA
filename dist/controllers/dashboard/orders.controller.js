@@ -297,7 +297,7 @@ class Orders {
                 })
                     .then((result) => {
                     if (result.length == 0) {
-                        res.redirect("/");
+                        res.redirect("/home");
                         return;
                     }
                     const totalOfAll = others.finalPrice(result);
