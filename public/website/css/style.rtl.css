@@ -5,11 +5,17 @@
  * Copyleft 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
   section , .container , .container-fluid {
     overflow-x: hidden !important;
   }
 body.padding {
   padding-top: 186px;
+}
+h2 {
+  span {
+    font-size: 22px;
+  }
 }
 .navbareLower.active,
 .upperNavbare.active {
@@ -11280,7 +11286,7 @@ div.testmonial .author h5 span {
 }
 
 .logoImageNav {
-  width: 120px;
+  width: 135px;
   aspect-ratio: 1/0.5;
   display: block;
 }

@@ -165,11 +165,10 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
                                                                 </li>
                                                                 <li><hr class="dropdown-divider"></li>
                                                                 <li>
-                                                                    <form class="d-inline-block" action="/dashboard/sliders/delete?_csrf=<%= csrf %>" method="post" style="width:100%">
+                                                                    <form class="d-inline-block m-0" action="/dashboard/sliders/delete?_csrf=<%= csrf %>" method="post" style="width:100%">
                                                                         <input type="hidden" name="id" value="<%= element.id %>">
                                                                         <input type="hidden" name="oldImage" value="<%= element.image%>">
-                                                               
-                                                                        <button class="dropdown-item d-block" style="cursor: pointer;width:100%;outline:0;border:0;background:none" onclick="return confirm('are you sure that you wont to delete')">delete</button>
+                                                                        <button class="dropdown-item d-block" style="cursor: pointer;width:100%;outline:0;border:0;background:none" onclick="return confirm('are you sure that you wont to delete')">delete</button>                                                                    
                                                                     </form>
                                                                 </li>
                                                             </ul>

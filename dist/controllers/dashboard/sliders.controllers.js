@@ -188,7 +188,7 @@ class SlidersController {
                 const body = req.body;
                 const filesOperations = new helper_1.FilesOperations();
                 const validationMessage = new helper_1.ValidationMessage();
-                filesOperations.removeImg(req, "Sliders", body.image);
+                filesOperations.removeImg(req, "Sliders", body.oldImage);
                 sliders_1.default
                     .destroy({
                     where: {
