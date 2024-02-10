@@ -5,7 +5,49 @@
 <%- include("../inclueds/upperNavbare")  %> 
 <%- include("../inclueds/lowerNavbare")  %> 
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" style="max-width:58%" role="document">
+    <div class="modal-content" style="max-width:100%">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+            <div class="modal-body">
+                    
+                <div id="carouselExampleIndicators" class="carousel slide col-12 " style="height:100%" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <% product.descriptionImage.split("--").forEach((element , i) => { %>
+                            <% if (i < product.descriptionImage.split("--").length - 1) { %>
+                                <div class="carousel-item <%= i == 0 ? "active" : "" %>">
+                                    <img style="width:100%;height:400px" src="/assets/dashboard/products/<%= element %>" class="img-fluid mb-3" alt="0" />
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only"><%= trans("Previous") %></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only"><%= trans("next") %></span>
+                    </a>
+                </div>
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= trans("close") %></button>
+            </div>
+        </div>
+    </div>
+</div>   
     <!-- Breadcrumb Start -->
     <div class="container-fluid" 
         data-aos="zoom-in"
@@ -51,56 +93,14 @@
                         <i class="fa fa-2x fa-angle-right text-dark"></i>
                     </a>
                 </div>
-                <button type="button" style="width:100%;outline:0;border:1px solid #ddd;padding:4px 10px" class=" d-block" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" style="width:100%;outline:0;border:1px solid #ddd;padding:4px 10px" class=" d-block" data-toggle="modal" data-target="#exampleModalCenter">
                     <%= trans("moreToDescription") %>
                 </button>
                 <small style="text-align: center;text-transform: capitalize;display: block;">
                     <%= trans("onlyDisplay") %>
                 </small>
                 <!-- Modal -->
-                <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" style="max-width:58%" role="document">
-                    <div class="modal-content" style="max-width:100%">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                            <div class="modal-body">
-                                    
-                                <div id="carouselExampleIndicators" class="carousel slide col-12 " style="height:100%" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <% product.descriptionImage.split("--").forEach((element , i) => { %>
-                                            <% if (i < product.descriptionImage.split("--").length - 1) { %>
-                                                <div class="carousel-item <%= i == 0 ? "active" : "" %>">
-                                                    <img style="width:100%;height:400px" src="/assets/dashboard/products/<%= element %>" class="img-fluid mb-3" alt="0" />
-                                                </div>
-                                            <% } %>
-                                        <% }) %>
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only"><%= trans("Previous") %></span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only"><%= trans("next") %></span>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= trans("close") %></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>               
+                
             </div>
 
             <div class="col-lg-7 h-auto mb-30"
@@ -186,6 +186,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row px-xl-5"     
         data-aos="fade-up"
         data-aos-delay=""
@@ -293,10 +294,15 @@
                         </div>
                         <div class="text-center py-4">
                             <a class="h6 text-decoration-none text-truncate" href=""><%= element["productName_" + lang] %></a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5><%= element.price  %> <%= trans("Eg") %></h5><h6 class="text-muted ml-2"><% if (element.descount) { %>
-                                <del><%= element.price - ((element.descount * element.price) / 100) %> <%= trans("Eg") %></del>
-                                <% } %></h6>
+                            <div class="d-flex align-items-center justify-content-center mt-2 gap-row-4 gap">
+                                <h5>
+                                    <% if (element.descount) { %>
+                                        <%= trans("Eg") %> <%= element.price - ((element.descount * element.price) / 100) %> 
+                                    <% } %>
+                                </h5>
+                                <h6 class="text-muted ml-2">
+                                    <del> <%=element.price %> <%= trans("Eg") %> </del>
+                                </h6>
                             </div>
                             <div class="d-flex text-primary align-items-center justify-content-center mb-1">
                                 <% [1,2,3,4,5].forEach(ele => { %>

@@ -232,11 +232,16 @@
                                             </div>
                                             <div class="text-center py-4">
                                                 <a class="h6 text-decoration-none text-truncate" href="/product-Details/<%= element["slug_" + lang] %>"><%= element["productName_" + lang] %></a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                <h5><%= element.price  %> <%= trans("Eg") %></h5><h6 class="text-muted ml-2"><% if (element.descount) { %>
-                                                    <del><%= element.price - ((element.descount * element.price) / 100) %> <%= trans("Eg") %></del>
-                                                <% } %></h6>                                                
-                                            </div>
+                                                <div class="d-flex align-items-center justify-content-center mt-2 gap-2">
+                                                    <h5>
+                                                        <% if (element.descount) { %>
+                                                            <%= element.price - ((element.descount * element.price) / 100) %> <%= trans("Eg") %>
+                                                        <% } %>
+                                                    </h5>
+                                                    <h6 class="text-muted ml-2">
+                                                        <del><%= element.price  %> <%= trans("Eg") %></del>
+                                                    </h6>
+                                                </div>
                                                 <div class="d-flex align-items-center text-primary justify-content-center mb-1">
                                                 <% [1,2,3,4,5].forEach(ele => { %>
                                                     <i class="<%= element.sumRate >= ele ? "fas" : "far" %> fa-star"></i>

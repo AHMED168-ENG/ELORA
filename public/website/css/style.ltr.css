@@ -24,7 +24,7 @@ h2 {
   z-index: 1000;
 }
 .upperNavbare.active {
-  z-index: 15000;
+  z-index: 1500;
 }
 .upperNavbare.active {
   top: 0;
@@ -5793,13 +5793,15 @@ a.close.disabled {
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
+  display: flex !important;
+  align-items: center;
 }
 
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 2000;
   display: none;
   width: 100%;
   height: 100%;
